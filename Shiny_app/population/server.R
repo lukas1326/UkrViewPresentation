@@ -5,8 +5,8 @@ server <- function(input, output, session) {
 
         df_subset <- reactive({
                 req(input$location)
-                req(input$variant)
-                df %>% filter(Location %in% input$location,Variant %in% input$variant)
+                #req(input$variant)
+                df %>% filter(Location %in% input$location)#,Variant %in% input$variant)
         })
 
 output$table <- DT::renderDataTable({
@@ -19,9 +19,14 @@ output$table <- DT::renderDataTable({
                       rownames = FALSE)
 })
 output$lineplot<-renderPlot({
-        ggplot(data=df_subset(),
-               aes(x=Time,y=PopTotal))+
-                geom_line()
-})
+        theme_set(theme_bw())
+        options(scipen=10000)
+                ggplot(data=df_subset(),
+               aes(x=Time,y=PopTotal,col=Variant))+
+                geom_line()+
+                labs(y='Population,thousands',x='Years')+
+                theme(axis.text.x = element_text(angle = 90, vjust=0.5))+
+                scale_x_continuous(breaks = seq(1950, 2100, by = 10))
+       })
 
 }

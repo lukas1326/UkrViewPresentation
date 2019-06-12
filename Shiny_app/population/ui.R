@@ -16,9 +16,9 @@ ui <- fluidPage(
         selectInput("location",
                     "Location:",
                     choices = unique(sort(df$Location))),
-        selectInput("variant",
-                    "Variant:",
-                    choices = unique(sort(df$Variant))),
+        #selectInput("variant",
+                    #"Variant:",
+                    #choices = unique(sort(df$Variant))),
         #leafletOutput("mymap"),
         # Create a new row for the table.
         #DT::dataTableOutput("table")
