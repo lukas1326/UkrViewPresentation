@@ -31,7 +31,7 @@ ui <- fluidPage(
         sliderInput('slider_years','Choose period:',min = 1950,max=2100,value = c(1991,2030)),
         #leafletOutput("mymap"),
         # Create a new row for the table.
-        #DT::dataTableOutput("table")
+        #DT::dataTableOutput("table"),
         plotOutput('lineplot')
         
         )

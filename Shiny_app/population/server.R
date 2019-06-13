@@ -7,7 +7,7 @@ server <- function(input, output, session) {
                 req(input$location)
                 #req(input$variant)
                 df %>% filter(Location %in% input$location,Variant %in% input$variant,
-                              Time %in% input$slider_years)
+                              Time %in% (min(input$slider_years):max(input$slider_years)))
         })
 
 output$table <- DT::renderDataTable({
