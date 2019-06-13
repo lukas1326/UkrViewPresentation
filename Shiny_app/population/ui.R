@@ -14,10 +14,11 @@ df<- read.csv('data/WPP2017_TotalPopulationBySex.csv')
 
 ui <- fluidPage(
         titlePanel("Total Population by Sex"),
-        selectInput("location",
+        selectizeInput("location",
                     "Location:",
                     choices = unique(sort(df$Location)),
-                    selected = 'Ukraine'),
+                    selected = 'Ukraine',
+                    multiple=TRUE),
         selectizeInput("variant",
                     "Variant:",
                     choices = unique(sort(df$Variant)),

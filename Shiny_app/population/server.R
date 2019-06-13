@@ -32,7 +32,8 @@ output$lineplot<-renderPlot({
                 geom_line()+
                 labs(y='Population,mln',x='Years')+
                 theme(axis.text.x = element_text(angle = 90, vjust=0.5))+
-                scale_x_continuous(breaks = seq(1950, 2100, by = 10))
+                scale_x_continuous(breaks = seq(1950, 2100, by = 10))+
+                        facet_wrap(Location~ ., scales = "free_y")
        })
 
 }

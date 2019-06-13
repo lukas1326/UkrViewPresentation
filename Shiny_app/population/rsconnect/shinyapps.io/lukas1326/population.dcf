@@ -1,0 +1,12 @@
+name: population
+title: population
+username:
+account: lukas1326
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 979835
+bundleId: 2151293
+url: https://lukas1326.shinyapps.io/population/
+when: 1560438741.71583
+asMultiple: FALSE
+asStatic: FALSE
