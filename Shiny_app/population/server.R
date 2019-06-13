@@ -6,7 +6,7 @@ server <- function(input, output, session) {
         df_subset <- reactive({
                 req(input$location)
                 #req(input$variant)
-                df %>% filter(Location %in% input$location)#,Variant %in% input$variant)
+                df %>% filter(Location %in% input$location,Variant %in% input$variant)
         })
 
 output$table <- DT::renderDataTable({
@@ -21,8 +21,13 @@ output$table <- DT::renderDataTable({
 output$lineplot<-renderPlot({
         theme_set(theme_bw())
         options(scipen=10000)
+        
                 ggplot(data=df_subset(),
-               aes(x=Time,y=PopTotal,col=Variant))+
+               aes(x=Time,y=switch(input$sex,
+                                   '1'=PopMale,
+                                   '2'=PopFemale,
+                                   '3'=PopTotal),
+                   col=Variant))+
                 geom_line()+
                 labs(y='Population,thousands',x='Years')+
                 theme(axis.text.x = element_text(angle = 90, vjust=0.5))+
